@@ -7,7 +7,11 @@ var randomHangmanWords = hangmanWords[Math.floor(Math.random() * hangmanWords.le
 
 var string;
 var answerArray = [];
+var guessRemaining = 12;
+var lettersGuessed = [];
 
+
+console.log(randomHangmanWords);
 // 2. Ask user to press any key to get started
 
 
@@ -17,7 +21,7 @@ var answerArray = [];
 
     string = answerArray.join(" ");
     document.getElementById('answer').innerHTML = string;
-
+	document.getElementById('guess-remaining').innerHTML = guessRemaining;
 
 document.onkeyup = function(event) {
 
@@ -33,11 +37,19 @@ for (var i = 0; i < randomHangmanWords.length; i++) {
     }
 
 }
+if (randomHangmanWords.indexOf(userGuess) === -1) {
+guessRemaining = guessRemaining - 1;
+lettersGuessed = userGuess;
+
+
+}
+
 document.getElementById('answer').innerHTML = answerArray.join(" ");
+document.getElementById('guess-remaining').innerHTML = guessRemaining;
+document.getElementById('letters-guessed').innerHTML = lettersGuessed.join(" ");
 
-
-console.log(randomHangmanWords);
 console.log(userGuess);
+console.log(lettersGuessed);
 }
 
 // 4. Create a randomizer for the array of words that the user will guess
