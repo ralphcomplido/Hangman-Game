@@ -8,7 +8,8 @@ var randomHangmanWords = hangmanWords[Math.floor(Math.random() * hangmanWords.le
 var string;
 var answerArray = [];
 var guessRemaining = 12;
-var lettersGuessed = [];
+var lettersGuessed = document.getElementById("letters-guessed");
+var wrongGuesses = [];
 
 
 console.log(randomHangmanWords);
@@ -39,18 +40,21 @@ for (var i = 0; i < randomHangmanWords.length; i++) {
 }
 if (randomHangmanWords.indexOf(userGuess) === -1) {
 guessRemaining = guessRemaining - 1;
-lettersGuessed = userGuess;
+wrongGuesses.push(userGuess);
+lettersGuessed.innerHTML = wrongGuesses.join(", ");
+
 
 
 }
 
+
 document.getElementById('answer').innerHTML = answerArray.join(" ");
 document.getElementById('guess-remaining').innerHTML = guessRemaining;
-document.getElementById('letters-guessed').innerHTML = lettersGuessed.join(" ");
 
 console.log(userGuess);
 console.log(lettersGuessed);
 }
+
 
 // 4. Create a randomizer for the array of words that the user will guess
 
