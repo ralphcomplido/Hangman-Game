@@ -16,43 +16,47 @@ console.log(randomHangmanWords);
 // 2. Ask user to press any key to get started
 
 
-    for (var i = 0; i < randomHangmanWords.length; i++) {
-        answerArray[i] = "_";
-    }
+for (var i = 0; i < randomHangmanWords.length; i++) {
+    answerArray[i] = "_";
+}
 
-    string = answerArray.join(" ");
-    document.getElementById('answer').innerHTML = string;
-	document.getElementById('guess-remaining').innerHTML = guessRemaining;
+string = answerArray.join(" ");
+document.getElementById('answer').innerHTML = string;
+document.getElementById('guess-remaining').innerHTML = guessRemaining;
 
 document.onkeyup = function(event) {
 
-    // 3. Assign variable to the user input
 
-    var userGuess = event.key;
 
-for (var i = 0; i < randomHangmanWords.length; i++) {
+    var userGuess = event.key; // 3. Assign variable to the user input
 
-    if (randomHangmanWords[i] === userGuess) {
-        answerArray[i] = userGuess;
-        console.log(answerArray[i]);
+    if (wrongGuesses.indexOf(userGuess) !== -1) return;
+    for (var i = 0; i < randomHangmanWords.length; i++) {
+
+      if (wrongGuesses.indexOf(userGuess) === -1)  {
+        if (randomHangmanWords[i] === userGuess) {
+            answerArray[i] = userGuess;
+            console.log(answerArray[i]);
+        }
+
+    }
+}
+    if (randomHangmanWords.indexOf(userGuess) === -1) {
+        guessRemaining = guessRemaining - 1;
+        wrongGuesses.push(userGuess);
+        lettersGuessed.innerHTML = wrongGuesses.join(", ");
+
     }
 
-}
-if (randomHangmanWords.indexOf(userGuess) === -1) {
-guessRemaining = guessRemaining - 1;
-wrongGuesses.push(userGuess);
-lettersGuessed.innerHTML = wrongGuesses.join(", ");
+   
 
 
 
-}
+    document.getElementById('answer').innerHTML = answerArray.join(" ");
+    document.getElementById('guess-remaining').innerHTML = guessRemaining;
 
-
-document.getElementById('answer').innerHTML = answerArray.join(" ");
-document.getElementById('guess-remaining').innerHTML = guessRemaining;
-
-console.log(userGuess);
-console.log(lettersGuessed);
+    console.log(userGuess);
+    console.log(lettersGuessed);
 }
 
 

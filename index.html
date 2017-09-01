@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Hangman</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	
+    <title>Hangman</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
 <body>
-	<p id="answer"></p>
-	<p id="guess-remaining"></p>
-	<p id ="letters-guessed"></p>
+    <div class="container">
+        <div class="jumbotron" id="hangman-header">
+            <h1>Hangman</h1>
+            <p>2017 Style</p>
+        </div>
+        <div class="row spacing">
+        </div>
+        <div class="row">
+            <div class="col-md-6 clues" id="column">
+            <p>CLUE</p>
+            </div>
+            <div class="col-md-6 hangman-word" id="column">
+            	<p>Press Any Key to Get Started!</p>
+            	<p>Wins</p>
+            	<p>Current Word</p>
 
-	<script src="assets/javascript/game.js"></script>
-
-
+                <p id="answer"></p>
+                <p>Number of Guesses Remaining</p>
+                <p id="guess-remaining"></p>
+                <p>Letters Already Guessed</p>
+                <p id="letters-guessed"></p>
+            </div>
+        </div>
+    </div>
+    <script src="assets/javascript/game.js"></script>
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
+
 </html>
